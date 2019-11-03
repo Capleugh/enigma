@@ -12,7 +12,7 @@ class OffsetTest < Minitest::Test
   end
 
   def test_initialize
-    @offset.expects(:date).returns('021119')
+    @offset.stubs(:date).returns('021119')
 
     assert_equal '021119', @offset.date
   end
