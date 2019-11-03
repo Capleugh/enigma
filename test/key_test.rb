@@ -34,6 +34,11 @@ class KeyTest < Minitest::Test
     assert_equal '21456', @key_2.random
   end
 
+
+
+  ##### come back and figure out why this isn't working #####
+
+
   def test_it_can_generate_key
     expected = ['96', '62', '28', '87']
     @key.expects(:generate_key).returns(expected)
@@ -43,6 +48,7 @@ class KeyTest < Minitest::Test
   end
 
   def test_it_can_convert_strings_to_integers
+    # mock and stub this
     assert_equal [21, 14, 45, 56], @key_2.convert_key
   end
 end

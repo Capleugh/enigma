@@ -24,7 +24,7 @@ class OffsetTest < Minitest::Test
   end
 
   ### come back and figure out how to mock and stub ####
-
+  
   def test_it_can_take_last_four_digits
     # squared = @date.to_i * @date.to_i
 

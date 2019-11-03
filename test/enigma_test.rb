@@ -1,5 +1,7 @@
 require './test_helper'
 require './lib/enigma'
+require './lib/key'
+require './lib/offset'
 
 class EnigmaTest < Minitest::Test
   def setup
