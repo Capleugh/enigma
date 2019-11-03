@@ -10,7 +10,6 @@ class Offset
   end
 
   def last_four(square)
-    # require "pry"; binding.pry
     square.to_s[-4..-1]
   end
 
