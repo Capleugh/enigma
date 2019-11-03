@@ -6,8 +6,6 @@ class Key
   end
 
   def generate_key
-
-    # call the attr_reader instead of the instance variable because stubbing only works for method calls not instance variables, duh carl.
     split = []
     random.chars.each_cons(2) do |number|
       split << number[0].concat(number[1])

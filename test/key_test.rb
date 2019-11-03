@@ -7,7 +7,6 @@ class KeyTest < Minitest::Test
   def setup
     random = RandomNumber.generate_random_number
     @key = Key.new(random)
-    # @key_2 = Key.new('21456')
   end
 
   def test_it_exists
@@ -16,6 +15,7 @@ class KeyTest < Minitest::Test
 
   def test_initialize
     @key.stubs(:random).returns('96287')
+
     assert_equal '96287', @key.random
   end
 
