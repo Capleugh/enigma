@@ -8,5 +8,21 @@ class Key
 
   def initialize(random)
     @random = random
+    # require "pry"; binding.pry
+  end
+
+  def generate_key
+    # require "pry"; binding.pry
+    split = []
+    @random.chars.each_cons(2) do |number|
+      split << number[0].concat(number[1])
+    end
+    split
+  end
+
+  def convert_key
+    generate_key.map do |number|
+      number.to_i
+    end
   end
 end
