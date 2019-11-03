@@ -22,4 +22,13 @@ class OffsetTest < Minitest::Test
     assert_equal expected, @offset.square(@date)
     assert_equal 446_012_161, @sample_offset.square('021119')
   end
+
+  ### come back and figure out how to mock and stub ####
+
+  def test_it_can_take_last_four_digits
+    # squared = @date.to_i * @date.to_i
+
+    # assert_equal squared.to_s[-4, -1], @offset.last_four(squared)
+    assert_equal "2161", @sample_offset.last_four(446_012_161)
+  end
 end
