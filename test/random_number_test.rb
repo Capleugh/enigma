@@ -1,7 +1,7 @@
 require './test_helper'
 require './lib/random_number'
 
-class RandomNumberTest < Minitest:: Test
+class RandomNumberTest < Minitest::Test
   def test_random_number_length
     assert_equal 5, RandomNumber.generate_random_number.length
   end
