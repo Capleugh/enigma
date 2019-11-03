@@ -13,4 +13,10 @@ class Offset
     # require "pry"; binding.pry
     square.to_s[-4..-1]
   end
+
+  def generate_offset(last_four)
+    last_four.chars.map do |number|
+      number.to_i
+    end
+  end
 end

@@ -31,4 +31,8 @@ class OffsetTest < Minitest::Test
     # assert_equal squared.to_s[-4, -1], @offset.last_four(squared)
     assert_equal "2161", @sample_offset.last_four(446_012_161)
   end
+
+  def test_it_can_convert_to_an_array_of_integers
+    assert_equal [2, 1, 6, 1], @sample_offset.generate_offset("2161")
+  end
 end
