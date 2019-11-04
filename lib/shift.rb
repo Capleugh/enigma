@@ -1,7 +1,6 @@
 class Shift
   attr_reader :key, :offset
 
-
   def initialize(key, offset)
     @key = key
     @offset = offset
@@ -9,7 +8,7 @@ class Shift
 
   def create_shift
     offset_shift = offset.generate_offset
-    key_shift = key.convert_key.map.with_index do |number, i|
+    key.convert_key.map.with_index do |number, i|
       number + offset_shift[i]
     end
   end
