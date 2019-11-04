@@ -5,15 +5,15 @@ class Offset
     @date = date
   end
 
-  def square(date)
-    date.to_i * date.to_i
+  def square
+    date.to_i ** 2
   end
 
-  def last_four(square)
+  def last_four
     square.to_s[-4..-1]
   end
 
-  def generate_offset(last_four)
+  def generate_offset
     last_four.chars.map do |number|
       number.to_i
     end

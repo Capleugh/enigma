@@ -5,6 +5,7 @@ class OffsetTest < Minitest::Test
   def setup
     date = Time.new.strftime('%d%m%y')
     @offset = Offset.new(date)
+    @offset.stubs(:date).returns('021119')
   end
 
   def test_it_exists
@@ -12,20 +13,20 @@ class OffsetTest < Minitest::Test
   end
 
   def test_initialize
-    @offset.expects(:date).returns('021119')
-
+# require "pry"; binding.pry
     assert_equal '021119', @offset.date
   end
 
   def test_date_can_be_squared
-    assert_equal 446_012_161, @offset.square('021119')
+
+    assert_equal 446_012_161, @offset.square
   end
 
   def test_it_can_take_last_four_digits
-    assert_equal "2161", @offset.last_four(446_012_161)
+    assert_equal "2161", @offset.last_four
   end
 
   def test_it_can_convert_to_an_array_of_integers
-    assert_equal [2, 1, 6, 1], @offset.generate_offset("2161")
+    assert_equal [2, 1, 6, 1], @offset.generate_offset
   end
 end

@@ -12,6 +12,7 @@ class RandomNumberTest < Minitest::Test
 
   def test_random_number_generator_can_be_stubbed
     RandomNumber.stubs(:generate_random_number).returns('96287')
+    # require "pry"; binding.pry
     assert_equal '96287', RandomNumber.generate_random_number
   end
 end
