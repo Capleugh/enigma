@@ -1,8 +1,4 @@
-require './module/shiftable'
-
 class Shift
-  include Shiftable
-
   attr_reader :key, :offset
 
   def initialize(key, offset)

@@ -16,6 +16,7 @@ class EncyptionTest < Minitest::Test
     @key = Key.new(@random)
     @shift = Shift.new(@key, @offset)
     @encryptor = Encryptor.new('hello world', @key, @offset)
+    @charset = ('a'..'z').to_a.push(' ') 
   end
 
   def test_it_exists
@@ -43,7 +44,7 @@ class EncyptionTest < Minitest::Test
     assert_equal expected, @encryptor.shift_message_index(@charset)
   end
 
-  def test_it_can_return_letter_associated_with_shifted_index
-    expected = []
-  end
+  # def test_it_can_return_letter_associated_with_shifted_index
+  #   expected = []
+  # end
 end
