@@ -1,7 +1,7 @@
 require './test_helper'
+require 'mocha/minitest'
 require './lib/key'
 require './lib/random_number'
-require 'mocha/minitest'
 
 class KeyTest < Minitest::Test
   def setup
