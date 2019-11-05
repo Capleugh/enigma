@@ -25,5 +25,13 @@ class Encryptor
     end
   end
 
+  def find_letters_at_shifted_index(charset)
+    shift_message_index(charset).map do |number|
+       charset[number]
+    end
+  end
 
+  def get_encrypted_message(charset)
+    find_letters_at_shifted_index(charset).join
+  end
 end
