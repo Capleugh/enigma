@@ -39,14 +39,11 @@ class EncyptionTest < Minitest::Test
   def test_it_can_shift_message_index
     expected = [24, 13, 18, 18, 4, 8, 2, 21, 7, 20, 10]
 
-    @encryptor.initial_message_index(@charset)
-
     assert_equal expected, @encryptor.shift_message_index(@charset)
   end
 
   def test_it_can_return_letter_associated_with_shifted_index
     expected = ['y', 'n', 's', 's', 'e', 'i', 'c', 'v', 'h', 'u', 'k']
-    @encryptor.shift_message_index(@charset)
 
     assert_equal expected, @encryptor.find_letters_at_shifted_index(@charset)
   end

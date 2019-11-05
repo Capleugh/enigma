@@ -15,7 +15,6 @@ class Encryptor
   def initial_message_index(charset)
     message.chars.map do |letter|
       charset.find_index(letter)
-      # require "pry"; binding.pry
     end
   end
 
@@ -23,7 +22,6 @@ class Encryptor
     initial_message_index(charset).map.with_index do |number, i|
       shift_value = shift[i % 4]
       (shift_value + number) % 27
-      # require "pry"; binding.pry
     end
   end
 
