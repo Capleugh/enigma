@@ -1,25 +1,28 @@
 class Encryptor
-  attr_reader :message, :key, :date, :shift
+
+  attr_reader :message, :key, :date
 
   def initialize(message, key, date)
     @message = message
     @key = key
     @date = date
-    @shift = []
   end
 
-  def access_shift(shift)
-    @shift << shift.create_shift
+  def shift
+    @shift = Shift.new(key, date).create_shift
+    # require "pry"; binding.pry
   end
 
-
-  def link_message(charset)
-    message.chars.find_all do |letter|
-      charset.find_all do |char|
-        letter.ord == char.ord
-      end
+  def initial_message_index(charset)
+    message.chars.map do |letter|
+      charset.find_index(letter)
     end
   end
 
-  
+  def shift_message_index(charset)
+    initial_message_index(charset).map.with_index do |number, i|
+      shift_value = shift[i % 4]
+      (shift_value + number) % 27
+    end
+  end
 end

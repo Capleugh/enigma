@@ -16,7 +16,7 @@ class EncyptionTest < Minitest::Test
     @key = Key.new(@random)
     @shift = Shift.new(@key, @offset)
     @charset = ('a'..'z').to_a.push(' ')
-    @encryptor = Encryptor.new('hello world', @random, @offset)
+    @encryptor = Encryptor.new('hello world', @key, @offset)
   end
 
   def test_it_exists
@@ -25,21 +25,22 @@ class EncyptionTest < Minitest::Test
 
   def test_initialize
     assert_equal 'hello world', @encryptor.message
-    assert_equal '96287', @encryptor.key
+    assert_instance_of Key, @encryptor.key
     assert_instance_of Offset, @encryptor.date
-    assert_equal [], @encryptor.shift
+    assert_equal [98, 63, 34, 88], @encryptor.shift
   end
 
-  def test_it_can_access_shift
-    @encryptor.access_shift(@shift)
+  def test_it_can_find_message_index
+    expected = [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3]
 
-    expected = [98, 63, 34, 88]
-
-    assert_equal expected, @encryptor.shift.flatten
+    assert_equal expected, @encryptor.initial_message_index(@charset)
   end
 
-  def test_message_can_link_with_charset
-    expected = ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]
-    assert_equal expected, @encryptor.link_message(@charset)
+  def test_it_can_shift_message_index
+    expected = [24, 13, 18, 18, 4, 8, 2, 21, 7, 20, 10]
+
+    @encryptor.initial_message_index(@charset)
+
+    assert_equal expected, @encryptor.shift_message_index(@charset)
   end
 end
