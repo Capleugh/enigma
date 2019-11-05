@@ -10,7 +10,6 @@ class Encryptor
 
   def shift
     @shift = Shift.new(key, date).create_shift
-    # require "pry"; binding.pry
   end
 
   def initial_message_index(charset)
@@ -25,4 +24,6 @@ class Encryptor
       (shift_value + number) % 27
     end
   end
+
+
 end
