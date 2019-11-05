@@ -23,4 +23,14 @@ class Decryptor
       (number - shift_value) % 27
     end
   end
+
+  def unshifted_message_index(charset)
+    unshift_message_index(charset).map do |number|
+      charset[number]
+    end
+  end
+
+  def get_decrypted_message(charset)
+    unshifted_message_index(charset).join
+  end
 end

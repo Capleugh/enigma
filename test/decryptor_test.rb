@@ -42,4 +42,14 @@ class DecryptorTest < Minitest::Test
 
     assert_equal expected, @decryptor.unshift_message_index(@charset)
   end
+
+  def test_it_can_return_letter_associated_with_unshifted_index
+    expected = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+
+    assert_equal expected, @decryptor.unshifted_message_index(@charset)
+  end
+
+  def test_it_can_decrypt_message
+    assert_equal 'hello world', @decryptor.get_decrypted_message(@charset)
+  end
 end
