@@ -27,5 +27,19 @@ class EncyptionTest < Minitest::Test
     assert_equal 'hello world', @encryptor.message
     assert_equal '96287', @encryptor.key
     assert_instance_of Offset, @encryptor.date
+    assert_equal [], @encryptor.shift
+  end
+
+  def test_it_can_access_shift
+    @encryptor.access_shift(@shift)
+
+    expected = [98, 63, 34, 88]
+
+    assert_equal expected, @encryptor.shift.flatten
+  end
+
+  def test_message_can_link_with_charset
+    expected = ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]
+    assert_equal expected, @encryptor.link_message(@charset)
   end
 end
