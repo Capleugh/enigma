@@ -48,4 +48,8 @@ class DecryptorTest < Minitest::Test
 
     assert_equal expected, @decryptor.unshifted_message_index(@charset)
   end
+
+  def test_it_can_decrypt_message
+    assert_equal 'hello world', @decryptor.get_decrypted_message(@charset)
+  end
 end

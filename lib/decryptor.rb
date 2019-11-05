@@ -29,4 +29,8 @@ class Decryptor
       charset[number]
     end
   end
+
+  def get_decrypted_message(charset)
+    unshifted_message_index(charset).join
+  end
 end
