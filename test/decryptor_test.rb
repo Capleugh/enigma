@@ -36,4 +36,10 @@ class DecryptorTest < Minitest::Test
 
     assert_equal expected, @decryptor.shifted_message_index(@charset)
   end
+
+  def test_it_can_unshift_message_index
+    expected = [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3]
+
+    assert_equal expected, @decryptor.unshift_message_index(@charset)
+  end
 end
