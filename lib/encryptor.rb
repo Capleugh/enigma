@@ -13,7 +13,7 @@ class Encryptor
   end
 
   def initial_message_index(charset)
-    message.chars.map do |letter|
+    message.downcase.chars.map do |letter|
       charset.find_index(letter)
     end
   end
