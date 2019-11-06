@@ -19,15 +19,13 @@ class Enigma
     {encryption: encrypted_message,
       key: key.random,
       date: date.date}
-      # require "pry"; binding.pry
   end
 
-  def decrypt(message, key, date)
+  def decrypt(message, key = default_key, date = default_current_date)
     decrypted_message = Decryptor.new(message, key, date).get_decrypted_message(charset)
 
     {decryption: decrypted_message,
       key: key.random,
       date: date.date}
   end
-
 end
