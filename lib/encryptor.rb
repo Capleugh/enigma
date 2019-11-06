@@ -9,7 +9,7 @@ class Encryptor
   end
 
   def shift
-    @shift = Shift.new(key, date).create_shift
+    Shift.new(key, date).create_shift
   end
 
   def initial_message_index(charset)
