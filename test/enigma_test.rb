@@ -12,8 +12,8 @@ require './lib/enigma'
 
 class EnigmaTest < Minitest::Test
   def setup
-    date = Time.new.strftime('%d%m%y')
-    @offset= Offset.new(date)
+    @date = Time.new.strftime('%d%m%y')
+    @offset= Offset.new(@date)
     @offset.stubs(:date).returns('021119')
     RandomNumber.stubs(:generate_random_number).returns('96287')
     @random = RandomNumber.generate_random_number
@@ -47,5 +47,14 @@ class EnigmaTest < Minitest::Test
                 date: '021119'}
 
     assert_equal expected, @enigma.decrypt('ynsseicvhuk', @key, @offset)
+  end
+
+  def test_it_can_default_values
+    expected = {
+      encryption: 'ynsseicvhuk',
+      key: @key.random,
+      date: Time.new.strftime('%d%m%y')
+    }
+    assert_equal expected, @enigma.encrypt('hello world')
   end
 end

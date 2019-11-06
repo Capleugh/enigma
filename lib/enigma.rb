@@ -5,12 +5,21 @@ class Enigma
     @charset = charset
   end
 
-  def encrypt(message, key, date)
+  def default_key
+    Key.new(RandomNumber.generate_random_number)
+  end
+
+  def default_current_date
+    Offset.new(Time.new.strftime('%d%m%y'))
+  end
+
+  def encrypt(message, key = default_key, date = default_current_date)
     encrypted_message =  Encryptor.new(message, key, date).get_encrypted_message(charset)
 
     {encryption: encrypted_message,
       key: key.random,
       date: date.date}
+      # require "pry"; binding.pry
   end
 
   def decrypt(message, key, date)
@@ -20,4 +29,5 @@ class Enigma
       key: key.random,
       date: date.date}
   end
+
 end
