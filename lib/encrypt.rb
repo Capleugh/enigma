@@ -15,7 +15,6 @@ charset = ('a'..'z').to_a.push(' ')
 enigma = Enigma.new(charset)
 key = enigma.encrypt(initial_message)
 date = enigma.encrypt(initial_message)
-# require "pry"; binding.pry
 enigma.encrypt(initial_message)
 puts "Created '#{encrypted_file}' with the key #{key[:key]} and date #{date[:date]}."
 msg_file.close
@@ -26,4 +25,3 @@ enigma = Enigma.new(charset)
 encryption = enigma.encrypt(initial_message)[:encryption]
 enc_file.write(encryption)
 enc_file.close
-# encrypted message should be written to encrypted.txt file and the terminal should outpu file name key and date

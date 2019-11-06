@@ -28,5 +28,4 @@ decryption = enigma.decrypt(encrypted_message, key, date)
 decryption[:decryption]
 decr_file.write(decryption[:decryption])
 puts "Created '#{decrypted_file}' with the key #{key.random} and date #{date.date.to_s}"
-# require "pry"; binding.pry
 decr_file.close
