@@ -12,8 +12,8 @@ require './lib/enigma'
 
 class EnigmaTest < Minitest::Test
   def setup
-    date = Time.new.strftime('%d%m%y')
-    @offset= Offset.new(date)
+    @date = Time.new.strftime('%d%m%y')
+    @offset= Offset.new(@date)
     @offset.stubs(:date).returns('021119')
     RandomNumber.stubs(:generate_random_number).returns('96287')
     @random = RandomNumber.generate_random_number
@@ -34,18 +34,52 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_encrypt
-    expected = {encryption: 'ynsseicvhuk',
-                key: '96287',
-                date: '021119'}
+    expected = {
+      encryption: 'ynsseicvhuk',
+      key: '96287',
+      date: '021119'
+    }
 
     assert_equal expected, @enigma.encrypt('hello world', @key, @offset)
   end
 
   def test_decrypt
-    expected = {decryption: 'hello world',
-                key: '96287',
-                date: '021119'}
+    expected = {
+      decryption: 'hello world',
+      key: '96287',
+      date: '021119'
+    }
 
     assert_equal expected, @enigma.decrypt('ynsseicvhuk', @key, @offset)
+  end
+
+  def test_it_can_encrypt_message_when_given_only_a_key
+    expected = {
+      encryption: 'ynsseicvhuk',
+      key: '96287',
+      date: Time.new.strftime('%d%m%y')
+    }
+
+    assert_equal expected, @enigma.encrypt('hello world')
+  end
+
+  def test_it_can_decrypt_message_when_given_only_a_key
+    expected = {
+      decryption: 'hello world',
+      key: '96287',
+      date: Time.new.strftime('%d%m%y')
+    }
+
+    assert_equal expected, @enigma.decrypt('ynsseicvhuk', @key)
+  end
+
+  def test_it_can_encrypt_just_a_message
+    expected = {
+      encryption: 'ynsseicvhuk',
+      key: @key.random,
+      date: Time.new.strftime('%d%m%y')
+    }
+
+    assert_equal expected, @enigma.encrypt('hello world')
   end
 end
